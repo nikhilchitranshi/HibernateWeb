@@ -1,0 +1,14 @@
+<hibernate-mapping package="com.learning.orm.domain">
+	<class name="Events" table="EVENTS">
+		<id name="id" column="EVENT_ID">
+			<generator class="native" />
+		</id>
+		<property name="date" type="timestamp" column="EVENT_DATE" />
+		<property name="title" />
+		
+		<set name="participants" table="PERSON_EVENT" inverse="true">
+			<key column="EVENT_ID" />
+			<many-to-many column="PERSON_ID" class="Person" />
+		</set>
+	</class>
+</hibernate-mapping>
